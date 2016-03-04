@@ -34,4 +34,13 @@ Copy the files inside of resources folder in your project:
 Will be ready soon..
 
 
+## Author
+
+Fernando Valle, fernandovalle.developer@gmail.com
+
+## License
+
+FVVerticalSlideView is available under the MIT license. See the LICENSE file for more info.
+
+
 

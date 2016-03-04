@@ -31,7 +31,7 @@ Copy the files inside of resources folder in your project:
     FVVerticalSlideView.m
 
 #### CocoaPods:
-Will be ready soon..
+    pod 'FVVerticalSlideView'
 
 
 ## Author

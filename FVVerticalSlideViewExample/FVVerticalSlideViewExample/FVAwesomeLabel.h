@@ -1,10 +1,6 @@
 //
 //  FVAwesomeLabel.h
-//  RutasVillasRomanas
-//
 //  Created by Fernando on 19/11/15.
-//  Copyright © 2015 Signlab. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import "NSString+FontAwesome.h"

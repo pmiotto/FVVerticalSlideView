@@ -1,7 +1,7 @@
 # FVVerticalSlideView
 Easy and simple vertical slider where you can add your custom subviews. It have some protocols for improve the UX.
 
-<img src="SliderViewDemo.gif" width="300">
+<img src="SliderViewDemo.gif" width="250">
 
 ## Easy to use:
 

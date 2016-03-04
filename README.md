@@ -23,4 +23,15 @@ Easy and simple vertical slider where you can add your custom subviews. It have 
 ## Example:
 <a href="https://github.com/tato469/FVVerticalSlideView/tree/master/FVVerticalSlideViewExample">Take a look!</a>
 
+## Installation:
+#### Manual:
+Copy the files inside of resources folder in your project: 
+
+    FVVerticalSlideView.h 
+    FVVerticalSlideView.m
+
+#### CocoaPods:
+Will be ready soon..
+
+
 

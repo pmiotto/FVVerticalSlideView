@@ -3,7 +3,6 @@ Pod::Spec.new do |s|
   s.version          = "0.1"
   s.summary          = "Easy and simple vertical slider where you can add your custom subviews."
   s.homepage         = "https://github.com/tato469/FVVerticalSlideView"
-  s.screenshots      = "https://github.com/tato469/FVVerticalSlideView/blob/master/SliderViewDemo.gif"
   s.license          = 'MIT'
   s.author           = { "tato469" => "fernandovalle.developer@gmail.com" }
   s.source           = { :git => "https://github.com/tato469/FVVerticalSlideView.git", :tag => s.version.to_s }

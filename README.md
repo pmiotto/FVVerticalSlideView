@@ -20,8 +20,7 @@ Easy and simple vertical slider where you can add your custom subviews. It have 
         [self.view addSubview:slider];
     }
     
-## Example:
-<a href="https://github.com/tato469/FVVerticalSlideView/tree/master/FVVerticalSlideViewExample">Take a look!</a>
+Example: <a href="https://github.com/tato469/FVVerticalSlideView/tree/master/FVVerticalSlideViewExample">Take a look!</a>
 
 ## Installation:
 #### Manual:

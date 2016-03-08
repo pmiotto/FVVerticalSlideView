@@ -75,28 +75,32 @@
 
 -(void) startMovingSliderView
 {
-    
+    NSLog(@"Start moving SliderView");
 }
 
 -(void) movingSliderView:(float)calculatedPosition
 {
+    NSLog(@"calculatedPosition %f",calculatedPosition);
     
 }
 
 -(void) stopMovingSliderView:(float)calculatedPosition
 {
+    NSLog(@"stopMovingSliderView %f",calculatedPosition);
     
 }
 
 
 -(void) closeTopPositionSliderView:(float)calculatedPosition
 {
+    //NSLog(@"calculatedPosition %f",calculatedPosition);
     [header setAwesomeIcon:FAArrowDown andText:[NSString stringWithFormat:@" %@",headerTitle] withFotSize:14.0f];
 }
 
 
 -(void) closeBottomPositionSliderView:(float)calculatedPosition
 {
+    //NSLog(@"closeBottomPositionSliderView %f",calculatedPosition);
     [header setAwesomeIcon:FAArrowUp andText:[NSString stringWithFormat:@" %@",headerTitle] withFotSize:14.0f];
 }
 

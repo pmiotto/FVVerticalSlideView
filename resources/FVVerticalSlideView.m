@@ -68,6 +68,10 @@
         prevTime = lastTime;
         prevTranslate = lastTranslate;
         
+        if(_delegate != nil)
+            [_delegate startMovingSliderView];
+        
+        
     }
     else if (gesture.state == UIGestureRecognizerStateChanged)
     {
@@ -76,6 +80,9 @@
         lastTime = [NSDate timeIntervalSinceReferenceDate];
         lastTranslate = translate;
         
+        if(_delegate != nil)
+            [_delegate movingSliderView:(origin.y + translate.y)];
+        
         
         if(origin.y + translate.y < topY) //determine top Y
         {
@@ -83,15 +90,13 @@
             CGRect frame = gesture.view.frame;
             frame.origin =origin;
             gesture.view.frame=frame;
-            [gesture setTranslation:CGPointZero inView:gesture.view];
         }
         else if(origin.y + translate.y > (translationView.frame.size.height-bottomY)) //determine bottom Y
         {
-            origin = CGPointMake(origin.x, bottomY);
+            origin = CGPointMake(origin.x, translationView.frame.size.height-bottomY);
             CGRect frame = gesture.view.frame;
             frame.origin =origin;
             gesture.view.frame=frame;
-            [gesture setTranslation:CGPointZero inView:gesture.view];
         }
         else
         {
@@ -107,12 +112,12 @@
         if(origin.y + translate.y < (translationView.frame.size.height*1/4+topY)) //Top part
         {
             if(_delegate != nil)
-                [_delegate closeTopPositionSliderView:topY];
+                [_delegate closeTopPositionSliderView:(origin.y + translate.y)];
         }
         else //Bottom part
         {
             if(_delegate != nil)
-                [_delegate closeBottomPositionSliderView:topY];
+                [_delegate closeBottomPositionSliderView:(origin.y + translate.y)];
         }
     }
     else if (gesture.state == UIGestureRecognizerStateEnded)
@@ -124,6 +129,11 @@
         {
             swipeVelocity = CGPointMake((translate.x - prevTranslate.x) / seconds, (translate.y - prevTranslate.y) / seconds);
         }
+        
+        if(_delegate != nil)
+            [_delegate stopMovingSliderView:(origin.y + translate.y)];
+        
+
         
         float inertiaSeconds = 1.0;
         

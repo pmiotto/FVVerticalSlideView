@@ -17,7 +17,6 @@ This library for iOs provides an easy and simple vertical slider where you can a
                                                    bottom:bottom
                                           translationView:self.view];
         [slider setBackgroundColor:[UIColor darkGrayColor]];
-        [slider setTopY:top];
         slider.delegate = self;
         [self.view addSubview:slider];
     }

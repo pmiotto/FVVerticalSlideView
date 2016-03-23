@@ -3,6 +3,7 @@ This library for iOs provides an easy and simple vertical slider where you can a
 
 #### Version 0.1
 <img src="SliderViewDemo.gif" width="250">
+<img src="SliderViewDemo2.gif" width="250">
 
 ## Easy to use:
 

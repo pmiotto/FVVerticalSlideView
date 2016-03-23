@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED037C331CA28D3B001D6F4F /* HalfViewSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED037C321CA28D3B001D6F4F /* HalfViewSlideViewController.m */; };
 		ED7542FD1C886F6000E49961 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7542FC1C886F6000E49961 /* main.m */; };
 		ED7543001C886F6000E49961 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7542FF1C886F6000E49961 /* AppDelegate.m */; };
 		ED7543031C886F6000E49961 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7543021C886F6000E49961 /* ViewController.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED037C311CA28D3B001D6F4F /* HalfViewSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalfViewSlideViewController.h; sourceTree = "<group>"; };
+		ED037C321CA28D3B001D6F4F /* HalfViewSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalfViewSlideViewController.m; sourceTree = "<group>"; };
 		ED7542F81C886F6000E49961 /* FVVerticalSlideViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FVVerticalSlideViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7542FC1C886F6000E49961 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED7542FE1C886F6000E49961 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				ED7543091C886F6000E49961 /* LaunchScreen.storyboard */,
 				ED75430C1C886F6000E49961 /* Info.plist */,
 				ED7542FB1C886F6000E49961 /* Supporting Files */,
+				ED037C311CA28D3B001D6F4F /* HalfViewSlideViewController.h */,
+				ED037C321CA28D3B001D6F4F /* HalfViewSlideViewController.m */,
 			);
 			path = FVVerticalSlideViewExample;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED037C331CA28D3B001D6F4F /* HalfViewSlideViewController.m in Sources */,
 				ED7543031C886F6000E49961 /* ViewController.m in Sources */,
 				ED7543001C886F6000E49961 /* AppDelegate.m in Sources */,
 				ED779DEE1C89756F009A7BC2 /* NSString+FontAwesome.m in Sources */,

@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/tato469/FVVerticalSlideView.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/tato469'
 
-  s.platform     = :ios, '8.4'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'resources/*.{m,h}'

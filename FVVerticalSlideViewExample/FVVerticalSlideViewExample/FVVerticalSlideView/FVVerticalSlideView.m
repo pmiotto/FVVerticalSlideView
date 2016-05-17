@@ -147,7 +147,7 @@
             }
             else if((center.y + translate.y + swipeVelocity.y * inertiaSeconds) < (translationView.frame.size.height+topY))
             {
-                [self slideToTop];
+                //[self slideToTop];
             }
             else
             {

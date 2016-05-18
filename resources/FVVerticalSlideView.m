@@ -14,7 +14,7 @@
 }
  
 -(id) initWithTop:(CGFloat)top bottom:(CGFloat)bottom translationView:(UIView *)view
- {
+{
  
      self = [super initWithFrame:CGRectMake(0,
                                             view.frame.size.height-bottom,
@@ -143,7 +143,8 @@
         {
             if(swipeVelocity.y > 100.0f)
             {
-                [self slideToTop];
+                if (translate.y <= 0 && prevTranslate.y <= 0)
+					[self slideToTop];
             }
             else if((center.y + translate.y + swipeVelocity.y * inertiaSeconds) < (translationView.frame.size.height+topY))
             {
@@ -160,7 +161,8 @@
         {
             if(swipeVelocity.y < -100.0f)
             {
-                [self slideToBottom];
+                if (translate.y >= 0 && prevTranslate.y >= 0)
+                    [self slideToBottom];
             }
             else if((center.y + translate.y + swipeVelocity.y * inertiaSeconds) > (translationView.frame.size.height+topY))
             {

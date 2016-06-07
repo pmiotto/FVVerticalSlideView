@@ -32,7 +32,7 @@
         
         [self addGestureRecognizer:pgr];
         
-#if 1   //  default animation
+#if 0   //  default animation
         self.animationDurationPhase1 = 0.4;
         self.animationDurationPhase2 = 0;
         self.animationLengthPhase2 = 0;
@@ -161,15 +161,15 @@
             if(swipeVelocity.y > 100.0f)
             {
                 if (translate.y <= 0 && prevTranslate.y <= 0)
-					[self slideToTop];
+                    [self slideToTop:YES];
             }
             else if((center.y + translate.y + swipeVelocity.y * inertiaSeconds) < (translationView.frame.size.height+topY))
             {
-                [self slideToTop];
+                [self slideToTop:YES];
             }
             else
             {
-                [self slideToBottom];
+                [self slideToBottom:YES];
             }
             
 
@@ -179,15 +179,15 @@
             if(swipeVelocity.y < -100.0f)
             {
                 if (translate.y >= 0 && prevTranslate.y >= 0)
-                    [self slideToBottom];
+                    [self slideToBottom:YES];
             }
             else if((center.y + translate.y + swipeVelocity.y * inertiaSeconds) > (translationView.frame.size.height+topY))
             {
-                [self slideToBottom];
+                [self slideToBottom:YES];
             }
             else
             {
-                [self slideToTop];
+                [self slideToTop:YES];
             }
 
         }
@@ -197,13 +197,27 @@
 
 -(void) slideToBottom
 {
-    [UIView animateWithDuration:self.animationDurationPhase1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [self slideToBottom:NO];
+}
+
+-(void) slideToBottom:(BOOL)isSimple
+{
+    NSTimeInterval duration1 = self.animationDurationPhase1;
+    NSTimeInterval duration2 = self.animationDurationPhase2;
+    CGFloat length = self.animationLengthPhase2;
+    if (isSimple)
+    {
+        duration1 = 0.4;
+        duration2 = 0;
+        length = 0;
+    }
+    [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect frame = self.frame;
-        frame.origin.y = (translationView.frame.size.height-bottomY) - self.animationLengthPhase2;
+        frame.origin.y = (translationView.frame.size.height-bottomY) - length;
         self.frame = frame;
         
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:self.animationDurationPhase2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             CGRect frame = self.frame;
             frame.origin.y = translationView.frame.size.height-bottomY;
             self.frame = frame;
@@ -219,13 +233,27 @@
 
 -(void) slideToTop
 {
-    [UIView animateWithDuration:self.animationDurationPhase1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [self slideToTop:NO];
+}
+
+-(void) slideToTop:(BOOL)isSimple
+{
+    NSTimeInterval duration1 = self.animationDurationPhase1;
+    NSTimeInterval duration2 = self.animationDurationPhase2;
+    CGFloat length = self.animationLengthPhase2;
+    if (isSimple)
+    {
+        duration1 = 0.4;
+        duration2 = 0;
+        length = 0;
+    }
+    [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect frame = self.frame;
-        frame.origin.y = topY + self.animationLengthPhase2;
+        frame.origin.y = topY + length;
         self.frame = frame;
         
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:self.animationDurationPhase2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             CGRect frame = self.frame;
             frame.origin.y = topY;
             self.frame = frame;

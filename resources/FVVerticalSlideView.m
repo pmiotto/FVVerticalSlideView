@@ -41,6 +41,7 @@
         self.animationDurationPhase2 = 0.5;
         self.animationLengthPhase2 = 160;
 #endif
+        status = FVStatusBottom;
     }
     
     return self;

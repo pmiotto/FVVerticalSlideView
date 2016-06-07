@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8317D0121D067C06006C30D1 /* FVVerticalSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317D0111D067C06006C30D1 /* FVVerticalSlideView.m */; };
 		ED037C331CA28D3B001D6F4F /* HalfViewSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED037C321CA28D3B001D6F4F /* HalfViewSlideViewController.m */; };
 		ED7542FD1C886F6000E49961 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7542FC1C886F6000E49961 /* main.m */; };
 		ED7543001C886F6000E49961 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7542FF1C886F6000E49961 /* AppDelegate.m */; };
@@ -16,7 +17,6 @@
 		ED75430B1C886F6000E49961 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7543091C886F6000E49961 /* LaunchScreen.storyboard */; };
 		ED7543161C886F6000E49961 /* FVVerticalSlideViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7543151C886F6000E49961 /* FVVerticalSlideViewExampleTests.m */; };
 		ED7543211C886F6000E49961 /* FVVerticalSlideViewExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7543201C886F6000E49961 /* FVVerticalSlideViewExampleUITests.m */; };
-		ED7543311C88704600E49961 /* FVVerticalSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7543301C88704600E49961 /* FVVerticalSlideView.m */; };
 		ED779DEC1C89756F009A7BC2 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED779DE71C89756F009A7BC2 /* FontAwesome.ttf */; };
 		ED779DED1C89756F009A7BC2 /* FVAwesomeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED779DE91C89756F009A7BC2 /* FVAwesomeLabel.m */; };
 		ED779DEE1C89756F009A7BC2 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = ED779DEB1C89756F009A7BC2 /* NSString+FontAwesome.m */; };
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8317D0101D067C06006C30D1 /* FVVerticalSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVVerticalSlideView.h; sourceTree = "<group>"; };
+		8317D0111D067C06006C30D1 /* FVVerticalSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVVerticalSlideView.m; sourceTree = "<group>"; };
 		ED037C311CA28D3B001D6F4F /* HalfViewSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalfViewSlideViewController.h; sourceTree = "<group>"; };
 		ED037C321CA28D3B001D6F4F /* HalfViewSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalfViewSlideViewController.m; sourceTree = "<group>"; };
 		ED7542F81C886F6000E49961 /* FVVerticalSlideViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FVVerticalSlideViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +60,6 @@
 		ED75431C1C886F6000E49961 /* FVVerticalSlideViewExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FVVerticalSlideViewExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7543201C886F6000E49961 /* FVVerticalSlideViewExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FVVerticalSlideViewExampleUITests.m; sourceTree = "<group>"; };
 		ED7543221C886F6000E49961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED75432F1C88704600E49961 /* FVVerticalSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FVVerticalSlideView.h; path = FVVerticalSlideView/FVVerticalSlideView.h; sourceTree = "<group>"; };
-		ED7543301C88704600E49961 /* FVVerticalSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FVVerticalSlideView.m; path = FVVerticalSlideView/FVVerticalSlideView.m; sourceTree = "<group>"; };
 		ED779DE71C89756F009A7BC2 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		ED779DE81C89756F009A7BC2 /* FVAwesomeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVAwesomeLabel.h; sourceTree = "<group>"; };
 		ED779DE91C89756F009A7BC2 /* FVAwesomeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVAwesomeLabel.m; sourceTree = "<group>"; };
@@ -92,6 +92,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8317D00F1D067C06006C30D1 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				8317D0101D067C06006C30D1 /* FVVerticalSlideView.h */,
+				8317D0111D067C06006C30D1 /* FVVerticalSlideView.m */,
+			);
+			name = resources;
+			path = ../../resources;
+			sourceTree = "<group>";
+		};
 		ED7542EF1C886F5F00E49961 = {
 			isa = PBXGroup;
 			children = (
@@ -115,12 +125,12 @@
 		ED7542FA1C886F6000E49961 /* FVVerticalSlideViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				8317D00F1D067C06006C30D1 /* resources */,
 				ED779DE71C89756F009A7BC2 /* FontAwesome.ttf */,
 				ED779DE81C89756F009A7BC2 /* FVAwesomeLabel.h */,
 				ED779DE91C89756F009A7BC2 /* FVAwesomeLabel.m */,
 				ED779DEA1C89756F009A7BC2 /* NSString+FontAwesome.h */,
 				ED779DEB1C89756F009A7BC2 /* NSString+FontAwesome.m */,
-				ED75432E1C886F6800E49961 /* FVVerticalSlideView */,
 				ED7542FE1C886F6000E49961 /* AppDelegate.h */,
 				ED7542FF1C886F6000E49961 /* AppDelegate.m */,
 				ED7543011C886F6000E49961 /* ViewController.h */,
@@ -160,15 +170,6 @@
 				ED7543221C886F6000E49961 /* Info.plist */,
 			);
 			path = FVVerticalSlideViewExampleUITests;
-			sourceTree = "<group>";
-		};
-		ED75432E1C886F6800E49961 /* FVVerticalSlideView */ = {
-			isa = PBXGroup;
-			children = (
-				ED75432F1C88704600E49961 /* FVVerticalSlideView.h */,
-				ED7543301C88704600E49961 /* FVVerticalSlideView.m */,
-			);
-			name = FVVerticalSlideView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,11 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8317D0121D067C06006C30D1 /* FVVerticalSlideView.m in Sources */,
 				ED037C331CA28D3B001D6F4F /* HalfViewSlideViewController.m in Sources */,
 				ED7543031C886F6000E49961 /* ViewController.m in Sources */,
 				ED7543001C886F6000E49961 /* AppDelegate.m in Sources */,
 				ED779DEE1C89756F009A7BC2 /* NSString+FontAwesome.m in Sources */,
-				ED7543311C88704600E49961 /* FVVerticalSlideView.m in Sources */,
 				ED7542FD1C886F6000E49961 /* main.m in Sources */,
 				ED779DED1C89756F009A7BC2 /* FVAwesomeLabel.m in Sources */,
 			);

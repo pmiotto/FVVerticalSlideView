@@ -15,23 +15,35 @@
  
 -(id) initWithTop:(CGFloat)top bottom:(CGFloat)bottom translationView:(UIView *)view
 {
- 
-     self = [super initWithFrame:CGRectMake(0,
-                                            view.frame.size.height-bottom,
-                                            view.frame.size.width,
-                                            view.frame.size.height-top)];
-     
-     translationView = view;
-     bottomY = bottom;
-     
-     
-     UIPanGestureRecognizer* pgr = [[UIPanGestureRecognizer alloc]
-                                    initWithTarget:self
-                                    action:@selector(handlePanGesture:)];
-     
-     [self addGestureRecognizer:pgr];
-     
-     return self;
+    
+    self = [super initWithFrame:CGRectMake(0,
+                                           view.frame.size.height-bottom,
+                                           view.frame.size.width,
+                                           view.frame.size.height-top)];
+    
+    if (self)
+    {
+        translationView = view;
+        bottomY = bottom;
+        
+        UIPanGestureRecognizer* pgr = [[UIPanGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(handlePanGesture:)];
+        
+        [self addGestureRecognizer:pgr];
+        
+#if 1   //  default animation
+        self.animationDurationPhase1 = 0.4;
+        self.animationDurationPhase2 = 0;
+        self.animationLengthPhase2 = 0;
+#else   //  2 phases animation
+        self.animationDurationPhase1 = 0.1;
+        self.animationDurationPhase2 = 0.5;
+        self.animationLengthPhase2 = 160;
+#endif
+    }
+    
+    return self;
 }
 
 -(void) setTranslationView:(UIView *)tView
@@ -49,6 +61,10 @@
     bottomY = bY;
 }
 
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+}
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture
 {
@@ -180,31 +196,45 @@
 
 -(void) slideToBottom
 {
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:self.animationDurationPhase1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect frame = self.frame;
-        frame.origin.y = translationView.frame.size.height-bottomY;
+        frame.origin.y = (translationView.frame.size.height-bottomY) - self.animationLengthPhase2;
         self.frame = frame;
         
     } completion:^(BOOL finished) {
-        if(_delegate != nil)
-            [_delegate closeBottomPositionSliderView:topY];
-        
-        status = FVStatusBottom;
+        [UIView animateWithDuration:self.animationDurationPhase2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            CGRect frame = self.frame;
+            frame.origin.y = translationView.frame.size.height-bottomY;
+            self.frame = frame;
+            
+        } completion:^(BOOL finished) {
+            if(_delegate != nil)
+                [_delegate closeBottomPositionSliderView:topY];
+            
+            status = FVStatusBottom;
+        }];
     }];
 }
 
 -(void) slideToTop
 {
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:self.animationDurationPhase1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect frame = self.frame;
-        frame.origin.y = topY;
+        frame.origin.y = topY + self.animationLengthPhase2;
         self.frame = frame;
         
     } completion:^(BOOL finished) {
-        if(_delegate != nil)
-            [_delegate closeTopPositionSliderView:topY];
-        
-        status = FVStatusTop;
+        [UIView animateWithDuration:self.animationDurationPhase2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            CGRect frame = self.frame;
+            frame.origin.y = topY;
+            self.frame = frame;
+            
+        } completion:^(BOOL finished) {
+            if(_delegate != nil)
+                [_delegate closeTopPositionSliderView:topY];
+            
+            status = FVStatusTop;
+        }];
     }];
 }
 

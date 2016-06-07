@@ -30,6 +30,9 @@ typedef enum {
 
 
 @property(nonatomic, weak) IBOutlet id<FVVerticalSliderViewDelegate> delegate;
+@property(nonatomic) NSTimeInterval animationDurationPhase1;
+@property(nonatomic) NSTimeInterval animationDurationPhase2;
+@property(nonatomic) CGFloat animationLengthPhase2;
 
 -(id) initWithTop:(CGFloat)top bottom:(CGFloat)bottom translationView:(UIView *)view;
 -(void) setTranslationView:(UIView *)tView;

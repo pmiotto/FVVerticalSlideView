@@ -48,3 +48,5 @@ Fernando Valle, fernandovalle.developer@gmail.com
 FVVerticalSlideView is available under the MIT license. [See the LICENSE file for more info](LICENSE).
 
 
+
+

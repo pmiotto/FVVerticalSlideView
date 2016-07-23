@@ -4,6 +4,7 @@
 //
 
 #import "FVVerticalSlideView.h"
+#import "PRTween.h"
 
 @implementation FVVerticalSlideView
 {
@@ -11,8 +12,9 @@
     FVSlideViewStatus status;
     CGFloat topY;
     CGFloat bottomY;
+    PRTweenOperation *activeTweenOperation;
 }
- 
+
 -(id) initWithTop:(CGFloat)top bottom:(CGFloat)bottom translationView:(UIView *)view
 {
     
@@ -150,7 +152,7 @@
         if(_delegate != nil)
             [_delegate stopMovingSliderView:(origin.y + translate.y)];
         
-
+        
         
         float inertiaSeconds = 1.0;
         
@@ -172,7 +174,7 @@
                 [self slideToBottom:YES];
             }
             
-
+            
         }
         else //Scrolling to bottom
         {
@@ -189,7 +191,7 @@
             {
                 [self slideToTop:YES];
             }
-
+            
         }
     }
     
@@ -200,35 +202,85 @@
     [self slideToBottom:NO];
 }
 
+
 -(void) slideToBottom:(BOOL)isSimple
 {
-    NSTimeInterval duration1 = self.animationDurationPhase1;
-    NSTimeInterval duration2 = self.animationDurationPhase2;
-    CGFloat length = self.animationLengthPhase2;
-    if (isSimple)
-    {
-        duration1 = 0.4;
-        duration2 = 0;
-        length = 0;
-    }
-    [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        CGRect frame = self.frame;
-        frame.origin.y = (translationView.frame.size.height-bottomY) - length;
-        self.frame = frame;
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            CGRect frame = self.frame;
-            frame.origin.y = translationView.frame.size.height-bottomY;
-            self.frame = frame;
-            
-        } completion:^(BOOL finished) {
+    
+    CGRect frame = self.frame;
+    frame.origin.y = translationView.frame.size.height-bottomY;
+    
+    activeTweenOperation = [PRTweenCGRectLerp lerp:self property:@"frame" from:self.frame to:frame duration:0.8 delay:0 timingFunction:&PRTweenTimingFunctionQuintOut updateBlock:nil completeBlock:^(BOOL finished) {
+        if(finished) {
             if(_delegate != nil)
                 [_delegate closeBottomPositionSliderView:topY];
             
             status = FVStatusBottom;
-        }];
+        }
     }];
+    
+    
+    /*
+     CGPoint startPoint = self.frame.origin;
+     CGRect fromValue = self.frame;
+     
+     CGRect frame = self.frame;
+     frame.origin.y = translationView.frame.size.height-bottomY;
+     CGRect toValue = frame;
+     
+     
+     [CATransaction begin]; {
+     
+     [CATransaction setCompletionBlock:^{
+     
+     if(_delegate != nil)
+     [_delegate closeBottomPositionSliderView:topY];
+     
+     status = FVStatusBottom;
+     
+     
+     }];
+     
+     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+     animation.fromValue = [NSValue valueWithCGRect:fromValue];
+     animation.toValue = [NSValue valueWithCGRect:toValue];
+     animation.duration = 1;
+     animation.removedOnCompletion = YES;
+     animation.fillMode = kCAFillModeForwards;
+     animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.2 :1.0 :0.3 :1.0];
+     [self.layer addAnimation:animation forKey:animation.keyPath];
+     } [CATransaction commit];
+     */
+    
+    /*
+     
+     NSTimeInterval duration1 = self.animationDurationPhase1;
+     NSTimeInterval duration2 = self.animationDurationPhase2;
+     CGFloat length = self.animationLengthPhase2;
+     if (isSimple)
+     {
+     duration1 = 0.4;
+     duration2 = 0;
+     length = 0;
+     }
+     [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+     CGRect frame = self.frame;
+     frame.origin.y = (translationView.frame.size.height-bottomY) - length;
+     self.frame = frame;
+     
+     } completion:^(BOOL finished) {
+     [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+     CGRect frame = self.frame;
+     frame.origin.y = translationView.frame.size.height-bottomY;
+     self.frame = frame;
+     
+     } completion:^(BOOL finished) {
+     if(_delegate != nil)
+     [_delegate closeBottomPositionSliderView:topY];
+     
+     status = FVStatusBottom;
+     }];
+     }];
+     */
 }
 
 -(void) slideToTop
@@ -238,33 +290,48 @@
 
 -(void) slideToTop:(BOOL)isSimple
 {
-    NSTimeInterval duration1 = self.animationDurationPhase1;
-    NSTimeInterval duration2 = self.animationDurationPhase2;
-    CGFloat length = self.animationLengthPhase2;
-    if (isSimple)
-    {
-        duration1 = 0.4;
-        duration2 = 0;
-        length = 0;
-    }
-    [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        CGRect frame = self.frame;
-        frame.origin.y = topY + length;
-        self.frame = frame;
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            CGRect frame = self.frame;
-            frame.origin.y = topY;
-            self.frame = frame;
-            
-        } completion:^(BOOL finished) {
+    CGRect frame = self.frame;
+    frame.origin.y = topY;
+    
+    activeTweenOperation = [PRTweenCGRectLerp lerp:self property:@"frame" from:self.frame to:frame duration:0.8 delay:0 timingFunction:&PRTweenTimingFunctionQuintOut updateBlock:nil completeBlock:^(BOOL finished) {
+        if(finished) {
             if(_delegate != nil)
                 [_delegate closeTopPositionSliderView:topY];
             
             status = FVStatusTop;
-        }];
+        }
     }];
+    
+    
+    /*
+     NSTimeInterval duration1 = self.animationDurationPhase1;
+     NSTimeInterval duration2 = self.animationDurationPhase2;
+     CGFloat length = self.animationLengthPhase2;
+     if (isSimple)
+     {
+     duration1 = 0.4;
+     duration2 = 0;
+     length = 0;
+     }
+     [UIView animateWithDuration:duration1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+     CGRect frame = self.frame;
+     frame.origin.y = topY + length;
+     self.frame = frame;
+     
+     } completion:^(BOOL finished) {
+     [UIView animateWithDuration:duration2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+     CGRect frame = self.frame;
+     frame.origin.y = topY;
+     self.frame = frame;
+     
+     } completion:^(BOOL finished) {
+     if(_delegate != nil)
+     [_delegate closeTopPositionSliderView:topY];
+     
+     status = FVStatusTop;
+     }];
+     }];
+     */
 }
 
 -(FVSlideViewStatus) slideViewStatus

@@ -209,13 +209,15 @@
     
     CGRect frame = self.frame;
     frame.origin.y = translationView.frame.size.height-bottomY;
-    
+   
+#if 0
     SystemSoundID sid;
     NSString* path = [[NSBundle mainBundle] pathForResource:@"stash-down" ofType:@"wav"];
     NSURL* url = [NSURL fileURLWithPath:path];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &sid);
     AudioServicesPlaySystemSound(sid);
-    
+#endif
+
     activeTweenOperation = [PRTweenCGRectLerp lerp:self property:@"frame" from:self.frame to:frame duration:0.8 delay:0 timingFunction:&PRTweenTimingFunctionQuintOut updateBlock:nil completeBlock:^(BOOL finished) {
         if(finished) {
             if(_delegate != nil)
@@ -299,12 +301,14 @@
 {
     CGRect frame = self.frame;
     frame.origin.y = topY;
-    
+   
+#if 0
     SystemSoundID sid;
     NSString* path = [[NSBundle mainBundle] pathForResource:@"stash-up" ofType:@"wav"];
     NSURL* url = [NSURL fileURLWithPath:path];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &sid);
     AudioServicesPlaySystemSound(sid);
+#endif
     
     activeTweenOperation = [PRTweenCGRectLerp lerp:self property:@"frame" from:self.frame to:frame duration:0.8 delay:0 timingFunction:&PRTweenTimingFunctionQuintOut updateBlock:nil completeBlock:^(BOOL finished) {
         if(finished) {
